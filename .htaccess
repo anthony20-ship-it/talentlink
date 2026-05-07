@@ -1,0 +1,14 @@
+# Bloquer les pages d'erreur HTML d'InfinityFree
+# et forcer les réponses PHP en JSON pur
+
+Options -Indexes
+php_flag display_errors off
+php_value error_reporting 0
+
+# Bloquer l'injection de publicités InfinityFree dans les réponses PHP
+<FilesMatch "\.(php)$">
+    Header set Content-Type "application/json; charset=utf-8"
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+</FilesMatch>
